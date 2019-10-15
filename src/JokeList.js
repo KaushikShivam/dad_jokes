@@ -14,6 +14,7 @@ class JokeList extends Component {
 		this.state = {
 			jokes: JSON.parse(window.localStorage.getItem('jokes') || '[]')
 		};
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	componentDidMount() {
@@ -36,6 +37,10 @@ class JokeList extends Component {
 			jokes: jokes
 		});
 		window.localStorage.setItem('jokes', JSON.stringify(jokes));
+	}
+
+	handleClick() {
+		this.getJokes();
 	}
 
 	handleVote(id, delta) {
